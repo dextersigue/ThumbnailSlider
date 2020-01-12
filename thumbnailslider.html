@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+<head>
+		<title>Thumbnail Slider</title>
+		<link rel="stylesheet" href="styles/thumbnailstyle.css">		
+</head>
+<body>
+		<div class="container">	
+			<div class="gallery">
+				<div class="slider">
+					<ul>
+						<li><img src="images/bigimg/bigimg1.jpg" class="slides" alt="Image1"></li>
+						<li><img src="images/bigimg/bigimg2.jpg" class="slides" alt="Image2"></li>
+						<li><img src="images/bigimg/bigimg3.jpg" class="slides" alt="Image3"></li>
+						<li><img src="images/bigimg/bigimg4.jpg" class="slides" alt="Image4"></li>
+						<li><img src="images/bigimg/bigimg5.jpg" class="slides" alt="Image5"></li>
+						<li><img src="images/bigimg/bigimg6.jpg" class="slides" alt="Image6"></li>
+						<li><img src="images/bigimg/bigimg7.jpg" class="slides" alt="Image7"></li>
+						<li><img src="images/bigimg/bigimg8.jpg" class="slides" alt="Image8"></li>
+					</ul>
+					</div>
+					<div class="slider-nav">
+						<img src="images/arrow-left.png"   class="arrow-left" data-dir="prev"  >
+						<img src="images/arrow-right.png" 	class="arrow-right" data-dir="next" >
+					</div>					
+					</div>
+			<div class="slider-pagi">					
+				<div class="pagi-container">
+					<ul>
+						<li><a href="#"><img src="images/thumbimg/thumbimg1.jpg" alt="Image1"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg2.jpg" alt="Image2"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg3.jpg" alt="Image3"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg4.jpg" alt="Image4"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg5.jpg" alt="Image5"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg6.jpg" alt="Image6"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg7.jpg" alt="Image7"/></a></li>
+						<li><a href="#"><img src="images/thumbimg/thumbimg8.jpg" alt="Image8"/></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+		
+		<script src="scripts/jquery.min.js"></script>
+		<script src="scripts/thumbnailsliderscript.js"></script>
+	    <script>
+	   		jQuery(document).ready(function ($) {
+		
+			var container=$('div.slider')
+										.css('overflow', 'hidden', 'clear:both')
+										.children('ul');				
+			var pagicontainer=$('div.pagi-container').children('ul');
+			$(document).ready(function(){
+			$('.slider-nav').show();
+			});		
+			
+			var sliderobj= new slider(container,pagicontainer,$('.slider-nav'));
+			sliderobj.nav.find('img').on('click', function(){
+			sliderobj.setCurrentPos($(this).data('dir'));
+			sliderobj.transition();
+			});
+			
+			sliderobj.pagicontainer.find('li a').on('click', function(){
+			sliderobj.setCurrentPos($(this).data('pgno'));
+			sliderobj.transition();					
+			});
+	        });
+			
+	</script>
+		
+</body>
+</html>
